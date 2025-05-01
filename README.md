@@ -1,10 +1,12 @@
 # my website
 first test of github pages functionnality
 
+https://tijoxa.github.io/
+
 ## doc
 setup wasm-pack: https://rustwasm.github.io/docs/wasm-pack/introduction.html
 
-setup github pages: https://pages.github.com/
+setup github pages: https://pages.github.com
 
 setup gh actions for gh pages: https://github.com/peaceiris/actions-gh-pages
 
