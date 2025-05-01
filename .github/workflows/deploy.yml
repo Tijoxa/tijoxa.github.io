@@ -31,6 +31,6 @@ jobs:
       uses: crazy-max/ghaction-github-pages@v4
       with:
         target_branch: gh-pages
-        build_dir: ./
+        build_dir: tijoxa.github.io
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
