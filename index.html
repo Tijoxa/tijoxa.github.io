@@ -10,6 +10,9 @@
 
 <body>
     <h1>Hello WebAssembly</h1>
+    <input type="text"
+           id="name-input"
+           placeholder="Enter your name">
     <button id="greet-button">Greet</button>
     <script type="module">
         import init, { greet } from './pkg/rust_wasm.js';
@@ -17,7 +20,8 @@
         async function run() {
             await init();
             document.getElementById('greet-button').addEventListener('click', () => {
-                greet();
+                const name = document.getElementById('name-input').value;
+                greet(name);
             });
         }
 

@@ -15,6 +15,6 @@ pub fn start() -> Result<(), JsValue> {
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, t!");
+pub fn greet(name: String) {
+    alert(&format!("Hello, {name}!"));
 }

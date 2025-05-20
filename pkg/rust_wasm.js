@@ -87,8 +87,13 @@ export function start() {
     wasm.start();
 }
 
-export function greet() {
-    wasm.greet();
+/**
+ * @param {string} name
+ */
+export function greet(name) {
+    const ptr0 = passStringToWasm0(name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    wasm.greet(ptr0, len0);
 }
 
 async function __wbg_load(module, imports) {
