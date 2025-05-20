@@ -12,5 +12,5 @@ setup gh actions for gh pages: https://github.com/peaceiris/actions-gh-pages
 
 for local, run
 ```Bash
-wasm-pack build --target web; uv run python -m http.server --bind 127.0.0.1 8000
+wasm-pack build --release --target web; uv run python -m http.server --bind 127.0.0.1 8000
 ```
