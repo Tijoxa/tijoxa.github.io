@@ -53,6 +53,9 @@ jobs:
           name: wasm-dist
           path: "./pkg"
 
+      - name: Decompress artifact
+        run: tar -xvf artifact.tar -C ./pkg; mv pkg/index.html .
+
       - name: Deploy to GitHub Pages
         # When changing version of this action, remember to update the
         # repository settings in github, otherwise the new version may
