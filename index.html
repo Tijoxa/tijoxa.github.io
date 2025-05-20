@@ -12,7 +12,7 @@
     <h1>Hello WebAssembly</h1>
     <button id="greet-button">Greet</button>
     <script type="module">
-        import init, { greet } from './pkg/t.js';
+        import init, { greet } from './pkg/rust_wasm.js';
 
         async function run() {
             await init();
