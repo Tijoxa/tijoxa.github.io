@@ -25,6 +25,9 @@ jobs:
     - name: Build with wasm-pack
       run: wasm-pack build --target web
 
+    - name: Copy index.html to pkg directory
+      run: cp index.html ./pkg/
+
     - name: Setup Pages
       uses: actions/configure-pages@v3
 
