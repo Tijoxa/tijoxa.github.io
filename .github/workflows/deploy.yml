@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,47 +23,11 @@ jobs:
       run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
     - name: Build with wasm-pack
-      run: wasm-pack build --target web
+      run: wasm-pack build --release --target web
 
-    - name: Copy index.html to pkg directory
-      run: cp index.html ./pkg/
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: "wasm-dist"
-        path: "./pkg"
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-
-    steps:
-      - name: Download wasm dist artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: wasm-dist
-          path: "./pkg"
-
-      - name: Decompress artifact
-        run: tar -xvf artifact.tar -C ./pkg; mv pkg/index.html .
-
-      - name: Deploy to GitHub Pages
-        # When changing version of this action, remember to update the
-        # repository settings in github, otherwise the new version may
-        # not be allowed to run.
-        uses: crazy-max/ghaction-github-pages@v4
-        with:
-          target_branch: gh-pages
-          build_dir: "./pkg"
-          jekyll: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./pkg
+        publish_branch: gh-pages
